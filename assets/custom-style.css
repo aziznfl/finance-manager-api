@@ -1,0 +1,142 @@
+.card-box {
+    display: block;
+	height: auto;
+    margin-bottom: 16px;
+    overflow: auto;
+    white-space: nowrap;
+}
+.card-view {
+	background-color: #849aaf;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 12px;
+    margin-right: 12px;
+    padding: 20px 12px;
+    text-align: center;
+    top: 0;
+	width: 225px;
+}
+.card-view.active {
+	background-color: #337ab7;
+	border: 3px solid #0559a9;
+}
+.card-title {
+    border-bottom: 1px solid;
+    margin-top: 0;
+	padding-bottom: 4px;
+}
+.card-body>h2 {
+    margin-bottom: 0;
+}
+.table>tbody>tr>td.text-middle {
+	vertical-align: middle;
+}
+.text-center-vertical {
+    vertical-align: middle !important;
+}
+
+
+.borderless {
+    margin: 10px -10px;
+    border: 0.5px solid #f4f4f4;
+}
+.floating-rounded-default {
+    padding: 4px;
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 20px;
+}
+.item {
+    background: #fff;
+    border: 1px solid #ddd;
+    cursor: move;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 16px;
+    width: 380px;
+}
+.items {
+    list-style: none outside none;
+    margin-bottom: 20px;
+    padding: 0;
+    width:480;
+}
+.second-level {
+    margin-left: 30px;
+    width: 380px;
+}
+.dragHover {
+    border-color: blue;
+    color: blue;
+}
+.placeholder {
+    background: #fff;
+    border: 1px dashed #ccc;
+    height: 40px;
+    width: 380px;
+}
+.placeholder-sub {
+    background: #fff;
+    border: 1px dashed #ccc;
+    height: 40px;
+    width: 380px;
+    margin-left: 30px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
