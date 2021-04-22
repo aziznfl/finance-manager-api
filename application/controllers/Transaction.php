@@ -14,7 +14,8 @@ class Transaction extends MY_Controller {
 		}
     }
 
-	// return JSON
+	// ---------- Manage --------- //
+
 	function manageTransactionNewFlow() {
 		$response = $this->getResponseUrl();
 		$isUpdateTransaction = false;
@@ -228,6 +229,25 @@ class Transaction extends MY_Controller {
 		}
 
 		echo json_encode(array("data" => $all));
+	}
+
+	//---------- REMOVE Transaction --------------//
+
+	function removeTransaction() {
+		$accountKey = $this->getHeaderFromUrl('currentUser');
+		$transactionIdentify = $this->input->get('transactionId');
+
+		$result = 0;
+		if (isset($transactionIdentify)) {
+			// check valid transaction
+			if ($this->isValidTransactionId($transactionIdentify, $accountKey)) {
+				$result = $this->M_Transaction->removeTransaction($transactionIdentify, $accountKey);
+			}
+		} else {
+			$result = null;
+		}
+
+		echo json_encode(array("data" => $result));
 	}
 }
 ?>

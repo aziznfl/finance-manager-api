@@ -179,6 +179,10 @@ class M_Transaction extends CoreModel {
 		return $this->db->query($query);
 	}
 
+	function removeTransaction($transactionIdentify, $accountKey) {
+		return $this->deleteData("transaction", "(transaction_identify = '" . $transactionIdentify . "' and account_key = '" . $accountKey."')");
+	}	
+
 	//---------- Investment ----------//
 
 	function getTotalInvestment($accountKey) {
