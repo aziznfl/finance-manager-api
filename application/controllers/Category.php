@@ -6,6 +6,7 @@ class Category extends MY_Controller {
     function __construct() {
         parent::__construct();
 		$this->load->model('M_Transaction');
+		$this->load->model('M_Investment');
 
 		$accountKey = $this->getHeaderFromUrl('currentUser');
         if (!$this->M_Transaction->checkHeaders($accountKey)) {
@@ -38,6 +39,11 @@ class Category extends MY_Controller {
 		$category["position"] = $data["position"];
 		$category["parentId"] = $data["parent_id"];
 		return $category;
+	}
+
+	function investment() {
+		$response = $this->M_Investment->getCategories()->result_array();
+		echo json_encode(array("data" => $response));
 	}
 }
 ?>

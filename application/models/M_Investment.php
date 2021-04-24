@@ -17,5 +17,13 @@ class M_Investment extends CoreModel {
 		$this->db->order_by("transaction_date", "ASC");
 		return $this->db->get('transaction_investment');
 	}
+
+	function getCategories() {
+		$query = "
+			SELECT * 
+			FROM category_investment
+		";
+		return $this->db->query($query);
+	}
 }
 ?>
