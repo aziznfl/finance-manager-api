@@ -42,8 +42,16 @@ class Category extends MY_Controller {
 	}
 
 	function investment() {
-		$response = $this->M_Investment->getCategories()->result_array();
-		echo json_encode(array("data" => $response));
+		$responses = $this->M_Investment->getCategories()->result_array();
+		$datas = array();
+		foreach($responses as $response) {
+			$data["id"] = $response["category_id"];
+			$data["name"] = $response["category_name"];
+			$data["valueUnit"] = $response["unit"];
+			array_push($datas, $data);
+		}
+		$datas = array_values($datas);
+		echo json_encode(array("data" => $datas));
 	}
 }
 ?>

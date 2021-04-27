@@ -14,6 +14,8 @@ class MY_Controller extends CI_Controller {
 		$this->setupMenus();
 	}
 
+	// ---------- GENERAL ---------- //
+
 	function setupMenus() {
 		$GLOBALS['menus'] = $this->CoreModel->getMenus();
 	}
@@ -23,6 +25,24 @@ class MY_Controller extends CI_Controller {
 			return false;
 		} else {
 			return true;
+		}
+	}
+
+	function setNullIsEmpty($value) {
+		if (isset($value)) {
+			return $value;
+		} else {
+			return null;
+		}
+	}
+
+	function setBoolFromInt($value) {
+		if ($value == 0 || $value == "0") {
+			return false;
+		} else if ($value == 1 || $value == "1") {
+			return true;
+		} else {
+			return null;
 		}
 	}
 

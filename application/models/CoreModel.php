@@ -20,6 +20,11 @@ class CoreModel extends CI_Model {
 		return $arrayMenu;
 	}
 
+	function addData($table, $data) {
+		$this->db->insert($table, $data);
+		return $this->db->insert_id();
+	}
+
 	function getWhereTransaction($accountKey) {
 		return "(account_key = '".$accountKey."')";
 	}

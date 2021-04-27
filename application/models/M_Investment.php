@@ -7,6 +7,14 @@ class M_Investment extends CoreModel {
 		parent::__construct();
 	}
 
+	function getCategories() {
+		$query = "
+			SELECT * 
+			FROM category_investment
+		";
+		return $this->db->query($query);
+	}
+
 	function getWhereTransaction($accountKey) {
 		return "(account_key = '".$accountKey."')";
 	}
@@ -18,10 +26,12 @@ class M_Investment extends CoreModel {
 		return $this->db->get('transaction_investment');
 	}
 
-	function getCategories() {
+	function getOneInvestmentById($investmentIdentify, $accountKey) {
 		$query = "
-			SELECT * 
-			FROM category_investment
+			SELECT i.*, c.category_name
+			FROM transaction_investment i
+			JOIN category_investment c ON i.category_id = c.category_id
+			WHERE i.transaction_investment_id = " . $investmentIdentify . " and " . $this->getWhereTransaction($accountKey) ."
 		";
 		return $this->db->query($query);
 	}
