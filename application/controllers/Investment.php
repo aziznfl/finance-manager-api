@@ -17,34 +17,11 @@ class Investment extends MY_Controller {
 
 	// ------------ MANAGE ------------- //
 
-	function manageInvestment() {
+	function insertInvestment() {
 		$response = $this->getResponseUrl();
-
-		// $data["investment_identify"] = $response->identify;
-		// $data["transaction_date"] = $response->date;
-		// $data["type"] = $response->status;
-		// $data["category_id"] = $response->instrumentId;
-		// $data["manager"] = $response->manager;
-		// $data["description"] = $response->description;
-		// $data["amount"] = $response->amount;
-		// $data["value"] = $this->setNullIsEmpty($response->value);
-		// $data["is_done"] = $this->setBoolFromInt($response->isDone);
-
-		// get from headers
+		
+		$data = $this->getDataInvestment($response);
 		$data['account_key'] = $this->input->get_request_header('currentUser', true);
-		echo json_encode(Array("data" => $response));
-	}
-
-	function createChildItemInvestment() {
-		$response = $this->getResponseUrl();
-		$data['account_key'] = $this->input->get_request_header('currentUser', true);
-
-		$data["transaction_date"] = $response->date;
-		$data["category_id"] = $response->instrumentId;
-		$data["manager"] = $response->manager;
-		$data["description"] = $response->description;
-		$data["type"] = $response->status;
-		$data["amount"] = $response->amount;
 
 		// set identify
 		$timestamp = time();
@@ -53,6 +30,31 @@ class Investment extends MY_Controller {
 		$investmentId = $this->CoreModel->addData("transaction_investment", $data);
 		echo json_encode(Array("data" => $investmentId));
 	}
+
+	function updateInvestment() {
+		$response = $this->getResponseUrl();
+
+		$data = $this->getDataInvestment($response);
+		$data['account_key'] = $this->input->get_request_header('currentUser', true);
+		$data["value"] = $this->setNullIsEmpty($response->value);
+
+		// $data["investment_identify"] = $response->identify;
+
+		echo json_encode(Array("data" => $response));
+	}
+
+	private function getDataInvestment($response) {
+		$data["transaction_date"] = $response->date;
+		$data["category_id"] = $response->instrumentId;
+		$data["manager"] = $response->manager;
+		$data["description"] = $response->description;
+		$data["type"] = $response->status;
+		$data["amount"] = $response->amount;
+
+		return $data;
+	}
+
+	// ------------- FETCH ------------- //
 
     function portfolio() {
 		$accountKey = $this->getHeaderFromUrl('currentUser');
