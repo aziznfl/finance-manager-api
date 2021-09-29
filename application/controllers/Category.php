@@ -39,7 +39,7 @@ class Category extends MY_Controller {
 
 	private function getCategoryItem($data) {
 		$category["id"] = (int)$data["category_id"];
-		$category["name"] = $data["category_name"];
+		$category["name"] = ucwords($data["category_name"]);
 		$category["icon"] = $data["icon"];
 		$category["position"] = (int)$data["position"];
 		$category["parentId"] = (int)$data["parent_id"];
