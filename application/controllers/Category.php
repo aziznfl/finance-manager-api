@@ -38,11 +38,11 @@ class Category extends MY_Controller {
 	}
 
 	private function getCategoryItem($data) {
-		$category["id"] = $data["category_id"];
+		$category["id"] = (int)$data["category_id"];
 		$category["name"] = $data["category_name"];
 		$category["icon"] = $data["icon"];
-		$category["position"] = $data["position"];
-		$category["parentId"] = $data["parent_id"];
+		$category["position"] = (int)$data["position"];
+		$category["parentId"] = (int)$data["parent_id"];
 		return $category;
 	}
 
