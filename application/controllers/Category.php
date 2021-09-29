@@ -26,6 +26,17 @@ class Category extends MY_Controller {
 		echo json_encode(array("data" => $datas));
 	}
 
+	function transaction() {
+		$responses = $this->M_Transaction->getCategories()->result_array();
+		$datas = array();
+		foreach ($responses as $response) {
+			$data = $this->getCategoryItem($response);
+			array_push($datas, $data);
+		}
+		$datas = array_values($datas);
+		echo json_encode(array("data" => $datas));
+	}
+
 	private function getCategoryItem($data) {
 		$category["id"] = $data["category_id"];
 		$category["name"] = $data["category_name"];
