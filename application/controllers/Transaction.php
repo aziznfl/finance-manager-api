@@ -5,7 +5,11 @@ class Transaction extends MY_Controller {
 
     function __construct() {
         parent::__construct();
-		$this->load->model('M_Transaction');
+	$this->load->model('M_Transaction');
+	
+	if($_SERVER["REQUEST_METHOD"] == "OPTIONS"){
+		exit();
+	}
     }
 
 	// ---------- Manage --------- //
