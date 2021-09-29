@@ -6,12 +6,6 @@ class Transaction extends MY_Controller {
     function __construct() {
         parent::__construct();
 		$this->load->model('M_Transaction');
-
-		$accountKey = $this->getHeaderFromUrl('currentUser');
-        if (!$this->M_Transaction->checkHeaders($accountKey)) {
-			header("location: ".base_url('account/logoutUserSettings'));
-			exit;
-		}
     }
 
 	// ---------- Manage --------- //

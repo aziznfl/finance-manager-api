@@ -7,12 +7,6 @@ class Category extends MY_Controller {
         parent::__construct();
 		$this->load->model('M_Transaction');
 		$this->load->model('M_Investment');
-
-		$accountKey = $this->getHeaderFromUrl('currentUser');
-        if (!$this->M_Transaction->checkHeaders($accountKey)) {
-			header("location: ".base_url('account/logoutUserSettings'));
-			exit;
-		}
     }
 
 	function listItem() {

@@ -7,12 +7,6 @@ class Investment extends MY_Controller {
         parent::__construct();
 		$this->load->model('CoreModel');
 		$this->load->model('M_Investment');
-
-		$accountKey = $this->getHeaderFromUrl('currentUser');
-        if (!$this->M_Investment->checkHeaders($accountKey)) {
-			header("location: ".base_url('account/logoutUserSettings'));
-			exit;
-		}
     }
 
 	// ------------ MANAGE ------------- //
