@@ -70,6 +70,16 @@ class M_Transaction extends CoreModel {
 		return $this->db->query($query);
 	}
 
+	function getRestOfTransaction($accountKey, $lastDate) {
+		$query = "
+			SELECT * FROM transaction t
+			LEFT JOIN category c ON c.category_id = t.category_id
+			LEFT JOIN transaction_list tl ON tl.transaction_id = t.transaction_id
+			WHERE ".$this->getWhereTransaction($accountKey)." AND type = 'outcome' AND t.is_deleted = 0 AND transaction_date >= CAST('".$lastDate."' AS DATETIME)
+		";
+		return $this->db->query($query);
+	}
+
 	function getCategoryTransaction($category_id, $apiKey) {
 		$query = "
 			SELECT CategoryHierarchy.* FROM (

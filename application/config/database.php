@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'aziznfl.com',
-	'username' => 'u9086968_aziznfl',
-	'password' => 'MARIMAS45',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
 	'database' => 'u9086968_finance_manager',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
