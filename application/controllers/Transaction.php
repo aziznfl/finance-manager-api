@@ -91,7 +91,7 @@ class Transaction extends MY_Controller {
 		$result = array("statusCode" => $response, "statusText" => $status);
 
 		// return JSON
-		// echo json_encode($result);
+		echo json_encode($result);
 	}
 
 	// ---------- FETCH TRANSACTION ----------- //
