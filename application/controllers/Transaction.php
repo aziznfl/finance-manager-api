@@ -243,15 +243,11 @@ class Transaction extends MY_Controller {
 			$response["description"] = $transaction["description"];
 			$response["tag"] = $transaction["tag"];
 			$response["type"] = $transaction["type"];
-			$response["place"]["name"] = $transaction["location"];
-			$response["place"]["coordinate"] = $transaction["coordinate"];
+			$response["location"] = $transaction["location"];
+			$response["coordinate"] = $transaction["coordinate"];
 			$response["picture"] = $transaction["picture"];
-			$response["total"]["value"] = (int)$transaction["amount"];
-			$response["total"]["text"] = number_format($transaction["amount"]);
-			$response["category"]["id"] = (int)$transaction["category_id"];
-			$response["category"]["name"] = ucwords($transaction["category_name"]);
-			$response["category"]["icon"] = $transaction["icon"];
-			$response["category"]["parentId"] = $transaction["parent_id"];
+			$response["amount"] = (int)$transaction["amount"];
+			$response["categoryId"] = (int)$transaction["category_id"];
 			$response["isDeleted"] = $transaction["is_deleted"];
 			$response["item"]["list"] = array();
 
