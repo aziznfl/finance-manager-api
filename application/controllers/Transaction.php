@@ -248,7 +248,7 @@ class Transaction extends MY_Controller {
 			$response["picture"] = $transaction["picture"];
 			$response["amount"] = (int)$transaction["amount"];
 			$response["categoryId"] = (int)$transaction["category_id"];
-			$response["isDeleted"] = $transaction["is_deleted"];
+			$response["isDeleted"] = $transaction["is_deleted"] == 0 ? false : true;
 			$response["item"]["list"] = array();
 
 			// get transaction list
@@ -261,7 +261,7 @@ class Transaction extends MY_Controller {
 				$item["qty"] = $resultList["quantity"];
 				$item["total"]["value"] = (int)$resultList["quantity"] * $resultList["price"];
 				$item["total"]["text"] = number_format($resultList["quantity"] * $resultList["price"]);
-				$item["isDeleted"] = $resultList["is_deleted"];
+				$item["isDeleted"] = $resultList["is_deleted"] == 0 ? false : true;
 
 				$total += $item["total"]["value"];
 				array_push($response["item"]["list"], $item);
