@@ -249,7 +249,7 @@ class Transaction extends MY_Controller {
 			$response["amount"] = (int)$transaction["amount"];
 			$response["categoryId"] = (int)$transaction["category_id"];
 			$response["isDeleted"] = $transaction["is_deleted"] == 0 ? false : true;
-			$response["item"]["list"] = array();
+			$response["list"] = array();
 
 			// get transaction list
 			$resultLists = $this->M_Transaction->getTransactionListItems($transaction["transaction_id"])->result_array();
@@ -261,7 +261,7 @@ class Transaction extends MY_Controller {
 				$item["total"] = (int)$resultList["quantity"] * $resultList["price"];
 				$item["isDeleted"] = $resultList["is_deleted"] == 0 ? false : true;
 
-				array_push($response["item"]["list"], $item);
+				array_push($response["list"], $item);
 			}
 			
 			array_push($all, $response);
