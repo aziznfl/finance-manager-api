@@ -256,19 +256,14 @@ class Transaction extends MY_Controller {
 			$total = 0;
 			foreach ($resultLists as $resultList) {
 				$item["name"] = $resultList["name"];
-				$item["price"]["value"] = (int)$resultList["price"];
-				$item["price"]["text"] = number_format($resultList["price"]);
+				$item["price"] = (int)$resultList["price"];
 				$item["qty"] = $resultList["quantity"];
-				$item["total"]["value"] = (int)$resultList["quantity"] * $resultList["price"];
-				$item["total"]["text"] = number_format($resultList["quantity"] * $resultList["price"]);
+				$item["total"] = (int)$resultList["quantity"] * $resultList["price"];
 				$item["isDeleted"] = $resultList["is_deleted"] == 0 ? false : true;
 
-				$total += $item["total"]["value"];
 				array_push($response["item"]["list"], $item);
 			}
-			$response["item"]["total"]["value"] = (int)$total;
-			$response["item"]["total"]["text"] = number_format($total);
-
+			
 			array_push($all, $response);
 		}
 
