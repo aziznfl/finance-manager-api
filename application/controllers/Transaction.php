@@ -257,7 +257,7 @@ class Transaction extends MY_Controller {
 			foreach ($resultLists as $resultList) {
 				$item["name"] = $resultList["name"];
 				$item["price"] = (int)$resultList["price"];
-				$item["quantity"] = $resultList["quantity"];
+				$item["quantity"] = (int)$resultList["quantity"];
 				$item["isDeleted"] = $resultList["is_deleted"] == 0 ? false : true;
 
 				array_push($response["list"], $item);
