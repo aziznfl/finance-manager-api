@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'aziznfl.com',
-	'username' => 'u9086968_aziznfl',
-	'password' => 'MARIMAS45',
-	'database' => 'u9086968_finance_manager',
+	'hostname' => 'ditaaziz.com',
+	'username' => 'dita4432__aziznfl',
+	'password' => 'Udahganti12',
+	'database' => 'dita4432_finance_manager',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
